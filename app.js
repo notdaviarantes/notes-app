@@ -1,5 +1,32 @@
 const yargs = require('yargs');
 const command = process.argv[2];
 
-console.log(process.argv);
-console.log(yargs.argv);
+// creating a note
+yargs.command({
+    command: 'add',
+    describe: 'add a new note',
+    handler: function () {
+        console.log('adding a new note!')
+    }
+})
+
+// removing a note
+yargs.command ({
+    command: 'remove',
+    describe: 'remove a note', 
+    handler: () => console.log('removing a note')
+})
+yargs.command ({
+    command: 'list',
+    describe: 'list a note', 
+    handler: () => console.log('listing a note')
+})
+
+yargs.command ({
+    command: 'read',
+    describe: 'read a note', 
+    handler: () => console.log('reading a note')
+})
+
+
+console.log(yargs.argv)
