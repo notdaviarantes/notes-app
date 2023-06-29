@@ -1,41 +1,50 @@
-const yargs = require('yargs');
-const command = process.argv[2];
+const yargs = require('yargs')
+const notes = require('./notes.js')
 
-// creating a note
+yargs.version('1.1.0')
+
 yargs.command({
     command: 'add',
-    describe: 'add a new note',
+    describe: 'Add a new note',
     builder: {
         title: {
-            describe: 'note title',
+            describe: 'Note title',
             demandOption: true,
             type: 'string'
         },
         body: {
-            describe: 'note description',
-            demandOption: true, 
+            describe: 'Note body',
+            demandOption: true,
             type: 'string'
         }
     },
-    handler: (argv) => console.log(`title: ${argv.title}\n` + `body: ${argv.body}`)
+    handler: function (argv) {
+        notes.addNote(argv.title, argv.body)
+    }
 })
 
-// removing a note
-yargs.command ({
+yargs.command({
     command: 'remove',
-    describe: 'remove a note', 
-    handler: () => console.log('removing a note')
+    describe: 'Remove a note',
+    handler: function () {
+        console.log('Removing the note')
+    }
 })
-yargs.command ({
+
+yargs.command({
     command: 'list',
-    describe: 'list a note', 
-    handler: () => console.log('listing a note')
+    describe: 'List your notes',
+    handler: function () {
+        console.log('Listing out all notes')
+    }
 })
 
-yargs.command ({
+yargs.command({
     command: 'read',
-    describe: 'read a note', 
-    handler: () => console.log('reading a note')
+    describe: 'Read a note',
+    handler: function () {
+        console.log('Reading a note')
+    }
 })
 
-yargs.parse();
+yargs.parse()
