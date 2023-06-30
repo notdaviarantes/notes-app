@@ -68,6 +68,11 @@ module.exports = {
         const notes = this.loadNotes();
 
         const noteFound = notes.find((note) => note.title === title)
-        console.log(noteFound);
+
+        if (!noteFound) {
+            console.log('note not found')
+        } else {
+            console.log(noteFound)
+        }
     }
 }
